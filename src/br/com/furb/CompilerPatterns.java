@@ -4,29 +4,16 @@ import java.util.regex.Pattern;
 
 public enum CompilerPatterns {
 	
-	/**
-	 * 01, R$01,00
-	 */
 	CHECK_ZERO_BEFORE("(^0+[0-9]|R\\$0+[1-9])"),
-	/**
-	 * Checa se é um motor
-	 */
+	
 	CHECK_ENGINE("[0-9]\\.[0-9]$"),
-	/**
-	 * 
-	 */
+	
 	CHECK_YEAR("^[0-9]{4}$"),
-	/**
-	 * 
-	 */
+	
 	CHECK_KM("^([0-9]{1,3}|[1-9]{1,3}\\.[0-9]{3})$"),
-	/**
-	 * 
-	 */
+	
 	CHECK_MONEY("^R\\$([0-9]{1,3}|[0-9]{1,3}\\.[0-9]{1,3}),[0-9]{2}$"),
-	/**
-	 * 
-	 */
+	
 	CHECK_COMB("Álcool|Bicombustível|Diesel|Gasolina"),
 
 	VERIFY_NUMBER("^[0-9]"), // 1
