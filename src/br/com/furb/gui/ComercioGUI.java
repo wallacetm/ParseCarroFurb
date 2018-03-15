@@ -1,6 +1,10 @@
 package br.com.furb.gui;
 
 import com.sun.java.swing.plaf.windows.WindowsLookAndFeel;
+
+import br.com.furb.Carro;
+import br.com.furb.CarroParser;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -29,7 +33,7 @@ public class ComercioGUI extends javax.swing.JFrame {
         btEquipe = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("ComÃ©rcio de veÃ­culos");
+        setTitle("Comércio de Veículos");
         setMaximumSize(new java.awt.Dimension(870, 670));
         setMinimumSize(new java.awt.Dimension(870, 670));
         setResizable(false);
@@ -106,16 +110,28 @@ public class ComercioGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btAnalisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAnalisarActionPerformed
-    // TODO add your handling code here:
-    }//GEN-LAST:event_btAnalisarActionPerformed
+    	CarroParser.getCarro().limpar();
+    	if (txtAreaEntrada.getText().trim().isEmpty()) {
+    		txtSaida.setText("");
+    		return;
+		}
+    	
+    	try {
+    		Carro carro = CarroParser.processar(this.txtAreaEntrada.getText());
+    		txtSaida.setText(carro.toString());
+		} catch (Exception e) {
+			txtSaida.setText(e.getMessage());
+		}
+    }
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
         this.txtSaida.setText(null);
         this.txtAreaEntrada.setText(null);
+        CarroParser.getCarro().limpar();
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void btEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEquipeActionPerformed
-        // TODO add your handling code here:
+    	this.txtSaida.setText("Desenvolvedores: Marcelo Wippel, Matheus Henrique e Wallace Reetz.");
     }//GEN-LAST:event_btEquipeActionPerformed
 
     /**
