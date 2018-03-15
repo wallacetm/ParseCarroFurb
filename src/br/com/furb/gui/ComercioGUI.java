@@ -4,6 +4,7 @@ import com.sun.java.swing.plaf.windows.WindowsLookAndFeel;
 
 import br.com.furb.Carro;
 import br.com.furb.CarroParser;
+import br.com.furb.exception.ParseCarroException;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -110,12 +111,11 @@ public class ComercioGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btAnalisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAnalisarActionPerformed
-    	CarroParser.getCarro().limpar();
     	if (txtAreaEntrada.getText().trim().isEmpty()) {
     		txtSaida.setText("");
     		return;
 		}
-    	
+
     	try {
     		Carro carro = CarroParser.processar(this.txtAreaEntrada.getText());
     		txtSaida.setText(carro.toString());
@@ -127,7 +127,6 @@ public class ComercioGUI extends javax.swing.JFrame {
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
         this.txtSaida.setText(null);
         this.txtAreaEntrada.setText(null);
-        CarroParser.getCarro().limpar();
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void btEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEquipeActionPerformed

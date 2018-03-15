@@ -27,14 +27,6 @@ public class Carro {
 		this.qtdValor = qtdValor;
 		this.qtdCombustivel = qtdCombustivel;
 	}
-	
-	public void limpar(){
-		this.qtdMotor = 0;
-		this.qtdAno = 0;
-		this.qtdKm = 0;
-		this.qtdValor = 0;
-		this.qtdCombustivel = 0;
-	}
 
 	@Override
 	public String toString() {

@@ -9,13 +9,12 @@ import br.com.furb.exception.ValorInvalidoException;
 
 public class CarroParser {
 
-	private static Carro c = new Carro();
-
 	public static void main(String[] args) {
 		
 	}
 
 	public static Carro processar(String entrada) {
+		Carro carro = new Carro();
 		int i = 0;
 		for (String line : entrada.split("\n|\r\n")) {
 			++i;
@@ -27,13 +26,13 @@ public class CarroParser {
 				// VALIDAÇÕES
 				Matcher matcherNumber = CompilerPatterns.VERIFY_NUMBER.getPattern().matcher(word);
 				if (matcherNumber.find()) { // verifica se é um número
-					validateNumber(word, i);
+					validateNumber(carro, word, i);
 					continue;
 				} else {
 
 					Matcher matcherSymbol = CompilerPatterns.VERIFY_VALID_SYMBOL.getPattern().matcher(word);
 					if (matcherSymbol.find()) { // verifica se é um simbolo válido
-						validateSymbol(word, i);
+						validateSymbol(carro, word, i);
 						continue;
 					} else {
 						
@@ -43,41 +42,41 @@ public class CarroParser {
 				}
 			}
 		}
-		return c;
+		return carro;
 	}
 
-	private static void validateNumber(String word, int lineNumber) {
+	private static void validateNumber(Carro carro, String word, int lineNumber) {
 		// valida o Motor
 		Matcher matcherNumber = CompilerPatterns.CHECK_ENGINE.getPattern().matcher(word);
 		if (matcherNumber.matches()) {
-			c.addQtdMotor();
+			carro.addQtdMotor();
 			return;
 		}
 
 		// valida o Ano
 		matcherNumber = CompilerPatterns.CHECK_YEAR.getPattern().matcher(word);
 		if (matcherNumber.matches()) {
-			c.addQtdAno();
+			carro.addQtdAno();
 			return;
 		}
 
 		// valida o KM
 		matcherNumber = CompilerPatterns.CHECK_KM.getPattern().matcher(word);
 		if (matcherNumber.matches()) {
-			c.addQtdKm();
+			carro.addQtdKm();
 			return;
 		}
 
 		throw new AtributoInvalidoException(lineNumber, word);
 	}
 
-	private static void validateSymbol(String word, int lineNumber) {
+	private static void validateSymbol(Carro carro, String word, int lineNumber) {
 		// Se ele entrou aqui, quer dizer que é um simbolo, logo, é um combustivel ou um valor.
 
 		// Valida o combustível
 		Matcher matcherNumber = CompilerPatterns.VERIFY_COMB.getPattern().matcher(word);
 		if (matcherNumber.matches()) {
-			c.addQtdCombustivel();
+			carro.addQtdCombustivel();
 		} else {
 			if (matcherNumber.find()) { //se ele não deu o match, porém deu o find, é um combustivel invalido
 				throw new CombustivelInvalidoException(lineNumber, word);
@@ -87,16 +86,13 @@ public class CarroParser {
 		// Valida o Valor
 		matcherNumber = CompilerPatterns.CHECK_MONEY.getPattern().matcher(word);
 		if (matcherNumber.matches()) {
-			c.addQtdValor();
+			carro.addQtdValor();
 		} else {
 			if (matcherNumber.find()) {
 				throw new ValorInvalidoException(lineNumber, word);
 			}
 		}
 	}
-	
-	public static Carro getCarro(){
-		return c;
-	}
+
 
 }
