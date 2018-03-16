@@ -77,4 +77,39 @@ public class Carro {
 	public void addQtdCombustivel() {
 		this.qtdCombustivel++;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + qtdAno;
+		result = prime * result + qtdCombustivel;
+		result = prime * result + qtdKm;
+		result = prime * result + qtdMotor;
+		result = prime * result + qtdValor;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Carro other = (Carro) obj;
+		if (qtdAno != other.qtdAno)
+			return false;
+		if (qtdCombustivel != other.qtdCombustivel)
+			return false;
+		if (qtdKm != other.qtdKm)
+			return false;
+		if (qtdMotor != other.qtdMotor)
+			return false;
+		if (qtdValor != other.qtdValor)
+			return false;
+		return true;
+	}
+	
 }
