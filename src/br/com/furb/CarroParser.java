@@ -62,36 +62,37 @@ public class CarroParser {
 		// valida o KM
 		matcherNumber = CompilerPatterns.CHECK_KM.getPattern().matcher(word);
 		if (matcherNumber.matches()) {
-			carro.addQtdKm();
-			return;
+			if(200000 >= Integer.parseInt(word.replace(".", ""))){
+				carro.addQtdKm();
+				return;
+			}
 		}
 
 		throw new AtributoInvalidoException(lineNumber, word);
 	}
 
 	private static void validateSymbol(Carro carro, String word, int lineNumber) {
-		// Se ele entrou aqui, quer dizer que é um simbolo, logo, é um combustivel ou um valor.
-		Matcher matcherZeroBefore = CompilerPatterns.CHECK_ZERO_BEFORE.getPattern().matcher(word);
-
 		// Valida o combustível
-		Matcher matcherNumber = CompilerPatterns.CHECK_COMB.getPattern().matcher(word);
-		if (matcherNumber.matches()) {
-			carro.addQtdCombustivel();
-		} else {
-			if (matcherNumber.find() || matcherZeroBefore.find()) { //se ele não deu o match, porém deu o find, é um combustivel invalido
+		if (checkPattern(CompilerPatterns.VERIFY_COMB, word)) {
+			if(checkPattern(CompilerPatterns.CHECK_COMB, word)){
+				carro.addQtdCombustivel();
+			} else {
 				throw new CombustivelInvalidoException(lineNumber, word);
 			}
 		}
-
 		// Valida o Valor
-		matcherNumber = CompilerPatterns.CHECK_MONEY.getPattern().matcher(word);
-		if (matcherNumber.matches()) {
-			carro.addQtdValor();
-		} else {
-			if (matcherNumber.find() || matcherZeroBefore.find()) {
+		if (checkPattern(CompilerPatterns.VERIFY_MONEY, word)) {
+			if(checkPattern(CompilerPatterns.CHECK_MONEY, word) && !checkPattern(CompilerPatterns.CHECK_ZERO_BEFORE, word)){
+				carro.addQtdValor();
+			} else {
 				throw new ValorInvalidoException(lineNumber, word);
 			}
 		}
+	}
+	
+	private static boolean checkPattern(CompilerPatterns compilerPattern, String word){
+		Matcher matcher = compilerPattern.getPattern().matcher(word);
+		return matcher.find();
 	}
 
 
