@@ -8,7 +8,7 @@ public class Carro {
 	private int qtdCombustivel;
 
 	/**
-	 * Construtor padr„o
+	 * Construtor padr√£o
 	 */
 	public Carro(){}
 	
@@ -21,9 +21,7 @@ public class Carro {
 	 * @param qtdCombustivel
 	 */
 	public Carro(int qtdMotor, int qtdAno, int qtdKm, int qtdValor, int qtdCombustivel) {
-		this.qtdMotor = qtdMotor;
-		this.qtdAno = qtdAno;
-		this.qtdKm = qtdKm;
+		thxx= qtdKm;
 		this.qtdValor = qtdValor;
 		this.qtdCombustivel = qtdCombustivel;
 	}
@@ -35,7 +33,7 @@ public class Carro {
 				+ "Ano:         " + this.getQtdAno() + "\n"
 				+ "Valor:       " + this.getQtdValor() + "\n"
 				+ "KM:          " + this.getQtdKm() + "\n"
-				+ "CombustÌvel: " + this.getQtdCombustivel();
+				+ "Combust√≠vel: " + this.getQtdCombustivel();
 	}
 
 	public int getQtdMotor() {
