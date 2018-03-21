@@ -34,7 +34,7 @@ public class ComercioGUI extends javax.swing.JFrame {
         btEquipe = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Comércio de Veículos");
+        setTitle("Comércio de veículos");
         setMaximumSize(new java.awt.Dimension(870, 670));
         setMinimumSize(new java.awt.Dimension(870, 670));
         setResizable(false);
@@ -60,6 +60,7 @@ public class ComercioGUI extends javax.swing.JFrame {
         txtSaida.setPreferredSize(null);
         scrollPaneSaida.setViewportView(txtSaida);
 
+        btAnalisar.setIcon(new javax.swing.ImageIcon(getClass().getClassLoader().getResource("ic_pesquisar.png"))); // NOI18N
         btAnalisar.setText("analisar");
         btAnalisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,6 +68,7 @@ public class ComercioGUI extends javax.swing.JFrame {
             }
         });
 
+        btLimpar.setIcon(new javax.swing.ImageIcon(getClass().getClassLoader().getResource("ic_limpar.png"))); // NOI18N
         btLimpar.setText("limpar");
         btLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,6 +76,7 @@ public class ComercioGUI extends javax.swing.JFrame {
             }
         });
 
+        btEquipe.setIcon(new javax.swing.ImageIcon(getClass().getClassLoader().getResource("ic_equipe.png"))); // NOI18N
         btEquipe.setText("equipe");
         btEquipe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,7 +103,7 @@ public class ComercioGUI extends javax.swing.JFrame {
                 .addComponent(scrollPaneEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btEquipe, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+                    .addComponent(btEquipe, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btLimpar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btAnalisar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -110,7 +113,7 @@ public class ComercioGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btAnalisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAnalisarActionPerformed
+    private void btAnalisarActionPerformed(java.awt.event.ActionEvent evt) {                                           
     	if (txtAreaEntrada.getText().trim().isEmpty()) {
     		txtSaida.setText("");
     		return;
