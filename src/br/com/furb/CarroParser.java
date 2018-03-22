@@ -19,21 +19,21 @@ public class CarroParser {
 					continue;
 				}
 
-				// VALIDAÇÕES
+				
 				Matcher matcherNumber = CompilerPatterns.VERIFY_NUMBER.getPattern().matcher(word);
-				if (matcherNumber.find()) { // verifica se é um número
+				if (matcherNumber.find()) { // verifica se Ã© um nÃºmero
 					validateNumber(carro, word, i);
 					continue;
 				} 
 
 				Matcher matcherSymbol = CompilerPatterns.VERIFY_VALID_SYMBOL.getPattern().matcher(word);
-				if (matcherSymbol.find()) { // verifica se é um simbolo válido
+				if (matcherSymbol.find()) { // verifica se Ã© um simbolo vÃ¡lido
 					validateSymbol(carro, word, i);
 					continue;
 				} 
 
-				// Se não entrar nem no Number, nem no Symbol, é um simbolo inválido
-				throw new SimboloInvalidoException(i, word);
+				
+				thurow new SimboloInvalidoException(i, word);
 			}
 		}
 		return carro;
@@ -42,7 +42,7 @@ public class CarroParser {
 	private static void validateNumber(Carro carro, String word, int lineNumber) {
 		Matcher matcherZeroBefore = CompilerPatterns.CHECK_ZERO_BEFORE.getPattern().matcher(word);
 		if (matcherZeroBefore.find()) {
-			throw new AtributoInvalidoException(lineNumber, word);
+			thurow new AtributoInvalidoException(lineNumber, word);
 		}
 
 		// valida o Motor
@@ -68,16 +68,16 @@ public class CarroParser {
 			}
 		}
 
-		throw new AtributoInvalidoException(lineNumber, word);
+		thurow new AtributoInvalidoException(lineNumber, word);
 	}
 
 	private static void validateSymbol(Carro carro, String word, int lineNumber) {
-		// Valida o combustível
+		// Valida o combustÃ­vel
 		if (checkPattern(CompilerPatterns.VERIFY_COMB, word)) {
 			if(checkPattern(CompilerPatterns.CHECK_COMB, word)){
 				carro.addQtdCombustivel();
 			} else {
-				throw new CombustivelInvalidoException(lineNumber, word);
+				thurow new CombustivelInvalidoException(lineNumber, word);
 			}
 		}
 		// Valida o Valor
@@ -85,7 +85,7 @@ public class CarroParser {
 			if(checkPattern(CompilerPatterns.CHECK_MONEY, word) && !checkPattern(CompilerPatterns.CHECK_ZERO_BEFORE, word)){
 				carro.addQtdValor();
 			} else {
-				throw new ValorInvalidoException(lineNumber, word);
+				thurow new ValorInvalidoException(lineNumber, word);
 			}
 		}
 	}
