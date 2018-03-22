@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author marwippel
+ * @author crjunior95
  */
 public class ParseCarroTest {
 
@@ -35,37 +35,37 @@ public class ParseCarroTest {
 	@Test
 	public void exemplo02() throws IOException {
 		String conteudo = getConteudo("exemplo2");
-		validaExcecao(conteudo, "erro na linha 1 - motor, ano ou KM inválido: 1.");
+		validaExcecao(conteudo, "erro na linha 1 - motor, ano ou KM invÃ¡lido: 1.");
 	}
 
 	@Test
 	public void exemplo03() throws IOException {
 		String conteudo = getConteudo("exemplo3");
-//		validaExcecao(conteudo, "erro na linha 1 - motor, ano ou KM inválido: 201");
+//		validaExcecao(conteudo, "erro na linha 1 - motor, ano ou KM invÃ¡lido: 201");
 	}
 
 	@Test
 	public void exemplo04() throws IOException {
 		String conteudo = getConteudo("exemplo4");
-		validaExcecao(conteudo, "erro na linha 2 - motor, ano ou KM inválido: 6.99");
+		validaExcecao(conteudo, "erro na linha 2 - motor, ano ou KM invÃ¡lido: 6.99");
 	}
 
 	@Test
 	public void exemplo05() throws IOException {
 		String conteudo = getConteudo("exemplo5");
-		validaExcecao(conteudo, "erro na linha 3 - valor inválido: R$23.800,0");
+		validaExcecao(conteudo, "erro na linha 3 - valor invÃ¡lido: R$23.800,0");
 	}
 
 	@Test
 	public void exemplo06() throws IOException {
 		String conteudo = getConteudo("exemplo6");
-		validaExcecao(conteudo, "erro na linha 3 - combustível inválido: Álcoo");
+		validaExcecao(conteudo, "erro na linha 3 - combustÃ­vel invÃ¡lido: Ãlcoo");
 	}
 
 	@Test
 	public void exemplo07() throws IOException {
 		String conteudo = getConteudo("exemplo7");
-		validaExcecao(conteudo, "erro na linha 4 - símbolo(s) inválido(s): alcool");
+		validaExcecao(conteudo, "erro na linha 4 - sÃ­mbolo(s) invÃ¡lido(s): alcool");
 	}
 
 	public void validaExcecao(String conteudo, String mensagemErroEsperada) {
